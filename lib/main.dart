@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:toonflix/screens/home_screen.dart';
 import 'package:toonflix/widgets/button.dart';
 import 'package:toonflix/widgets/currency_card.dart';
 
@@ -13,24 +14,14 @@ class App2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSwatch(
-          backgroundColor: const Color(0xFFE7626C),
-        ),
+        scaffoldBackgroundColor: Color(0xFFE7626C),
         textTheme: const TextTheme(
-          displayLarge: TextStyle(color: Color(0xFF232B55)),
+          headlineLarge: TextStyle(color: Color(0xFF232B55)),
         ),
         cardColor: const Color(0xFFF4EDDB),
       ),
 
-      home: const Scaffold(
-        backgroundColor: const Color(0xFFF4EDDB),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [MyLargeTitle()],
-          ),
-        ),
-      ),
+      home: HomeScreen(),
     );
   }
 }
@@ -43,7 +34,6 @@ class MyLargeTitle extends StatefulWidget {
 }
 
 class _MyLargeTitleState extends State<MyLargeTitle> {
-
   @override
   void initState() {
     super.initState();
@@ -55,7 +45,7 @@ class _MyLargeTitleState extends State<MyLargeTitle> {
   }
 
   @override
-  Widget build(BuildContext context) {    
+  Widget build(BuildContext context) {
     return Text(
       'My Large Title',
       style: TextStyle(
