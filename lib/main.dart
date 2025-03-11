@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:toonflix/screens/home_screen.dart';
+import 'package:toonflix/services/api_service.dart';
 import 'package:toonflix/widgets/button.dart';
 import 'package:toonflix/widgets/currency_card.dart';
 
 void main() {
-  runApp(App2());
+  runApp(App3());
+}
+
+class App3 extends StatelessWidget {
+  const App3({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(home: ToonHomeScreen());
+  }
 }
 
 class App2 extends StatelessWidget {
