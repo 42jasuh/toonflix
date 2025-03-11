@@ -146,29 +146,10 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-class ToonHomeScreen extends StatefulWidget {
-  const ToonHomeScreen({super.key});
+class ToonHomeScreen extends StatelessWidget {
+  ToonHomeScreen({super.key});
 
-  @override
-  State<ToonHomeScreen> createState() => _ToonHomeScreenState();
-}
-
-class _ToonHomeScreenState extends State<ToonHomeScreen> {
-  List<WebtoonModel> webtoons = [];
-  bool isLoading = true;
-
-  void waitForWebToons() async {
-    webtoons = await ApiService.getTodayToons();
-    isLoading = false;
-    setState(() {});
-  }
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    waitForWebToons();
-  }
+  Future<List<WebtoonModel>> webtoons = ApiService.getTodayToons();
 
   @override
   Widget build(BuildContext context) {
@@ -181,6 +162,15 @@ class _ToonHomeScreenState extends State<ToonHomeScreen> {
           "오늘의 웹툰",
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
         ),
+      ),
+      body: FutureBuilder(
+        future: webtoons,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return Text("There is data!");
+          }
+          return Text('Loading...');
+        },
       ),
     );
   }
